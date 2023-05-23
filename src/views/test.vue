@@ -2,26 +2,63 @@
     <el-container class="layout">
         <el-header class="header">效果对比页面</el-header>
         <el-main class="main">
-            <el-row>
+            <el-row class="row">
                 <div class="dicom">
                     <div class="dicomName">Origin</div>
                     <div id="OriginDicom" class="dicom"></div>
                 </div>
                 <div clsss="dicom">
-                    <div class="dicomName">Processed</div>
+                    <div class="dicomName">Normal</div>
                     <div id="ProcessedDicom" class="dicom"></div>
                 </div>
                 <div class="dicom">
-                    <div class="dicomName">Normal</div>
+                    <div class="dicomName">Processed</div>
                     <div id="NormalDicom" class="dicom"></div>
                 </div>
             </el-row>
-
-            <el-table :data="tableData" style="width: 100%" size="small">
-                <el-table-column prop="index" width="180" />
-                <el-table-column prop="origin" width="180" />
-                <el-table-column prop="processed" width="180" />
-            </el-table>
+            <el-row class="box-row">
+                <el-col class="box-tag"><span>PSNR</span><span>SSIM</span><span>RMSE</span></el-col>
+                <el-divider
+                    direction="vertical"
+                    style="
+                        margin-left: -5vw;
+                        margin-right: -9vw;
+                        height: 8rem;
+                        border-left: 3px var(--el-border-color) var(--el-border-style);
+                    "
+                />
+                <el-col class="box">
+                    <el-text type="default" style="font-size: 2rem">31.5019</el-text>
+                    <el-text type="default" style="font-size: 2rem">0.8901</el-text>
+                    <el-text type="default" style="font-size: 2rem">11.9413</el-text>
+                </el-col>
+                <div style="margin-right: -10vw; margin-left: -5vw">
+                    <svg-icon name="rightArrow" style="width: 10vw; height: 11vh"></svg-icon>
+                </div>
+                <el-col class="box">
+                    <el-text type="danger" style="font-size: 2rem">3.0206</el-text>
+                    <el-text type="danger" style="font-size: 2rem">0.0392</el-text>
+                    <el-text type="danger" style="font-size: 2rem">-3.5683</el-text>
+                </el-col>
+                <div style="margin-left: -10vw; margin-right: -5vw">
+                    <svg-icon name="leftArrow" style="width: 10vw; height: 11vh"></svg-icon>
+                </div>
+                <el-col class="box">
+                    <el-text type="default" style="font-size: 2rem">34.5225</el-text>
+                    <el-text type="default" style="font-size: 2rem">0.9293</el-text>
+                    <el-text type="default" style="font-size: 2rem">8.373</el-text>
+                </el-col>
+                <el-divider
+                    direction="vertical"
+                    style="
+                        margin-left: -9vw;
+                        margin-right: -5vw;
+                        height: 8rem;
+                        border-left: 3px var(--el-border-color) var(--el-border-style);
+                    "
+                />
+                <el-col class="box-tag"><span>PSNR</span><span>SSIM</span><span>RMSE</span></el-col>
+            </el-row>
         </el-main>
         <el-footer class="footer">
             <el-row>
@@ -365,8 +402,8 @@ function reversal() {
     margin: 0%;
 }
 .dicom {
-    width: 29.81rem;
-    height: 30rem;
+    width: 33vw;
+    height: 33vw;
     margin: 0px;
 }
 .header {
@@ -378,14 +415,39 @@ function reversal() {
     overflow: hidden;
     height: 30rem;
 }
+.main .row {
+    display: flex;
+    justify-content: center;
+}
 .main .dicomName {
     z-index: 20;
     position: absolute;
     font-size: 1.3rem;
     color: white;
-    margin-left: 12.5rem;
+    margin-left: 15vw;
     margin-top: 1rem;
     text-align: center;
+}
+.main .box-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    display: -webkit-flex;
+    background-color: rgb(198, 201, 204);
+}
+.main .box-row .box-tag {
+    display: flex;
+    justify-content: space-evenly; /*水平均匀分布  */
+    align-items: center;
+    flex-direction: column;
+    max-width: 15vw;
+}
+.main .box-row .box {
+    display: flex;
+    justify-content: space-evenly; /*水平均匀分布  */
+    align-items: center; /* 垂直居中  */
+    flex-direction: column;
+    max-width: 30vw;
 }
 .my-label {
     background: var(--el-color-success-light-9);

@@ -17,11 +17,11 @@ const router = createRouter({
             component: show
         },
         {
-            path: '/test',
+            path: '/',
             component: test
         },
         {
-            path: '/',
+            path: '/report',
             component: report
         },
         {
