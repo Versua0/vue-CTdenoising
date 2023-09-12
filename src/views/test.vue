@@ -33,7 +33,7 @@
                     <el-text type="default" style="font-size: 2rem">11.9413</el-text>
                 </el-col>
                 <div style="margin-right: -10vw; margin-left: -5vw">
-                    <svg-icon name="rightArrow" style="width: 10vw; height: 11vh"></svg-icon>
+                    <svg-icon name="rightArrow" style="width: 7vw; height: 17vh"></svg-icon>
                 </div>
                 <el-col class="box">
                     <el-text type="danger" style="font-size: 2rem">3.0206</el-text>
@@ -41,7 +41,7 @@
                     <el-text type="danger" style="font-size: 2rem">-3.5683</el-text>
                 </el-col>
                 <div style="margin-left: -10vw; margin-right: -5vw">
-                    <svg-icon name="leftArrow" style="width: 10vw; height: 11vh"></svg-icon>
+                    <svg-icon name="leftArrow" style="width: 7vw; height: 17vh"></svg-icon>
                 </div>
                 <el-col class="box">
                     <el-text type="default" style="font-size: 2rem">34.5225</el-text>
@@ -457,10 +457,12 @@ function reversal() {
 }
 .footer {
     background-color: rgb(52, 54, 54);
-    height: 6rem;
+    padding: 0rem;
+    height: 3rem;
 }
 .footer .functionKey {
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    width: 20vw;
 }
 </style>
