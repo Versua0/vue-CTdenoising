@@ -119,7 +119,10 @@ let processIds = ref([])
 let normalIds = ref([])
 let imageIndex = ref(0) //记录当前所展示的dicom文件的下标
 let imageNum = ref(0) //记录所上传的文件数量
-let imageId = 'wadouri:http://localhost:80/dcm/Arterial Phase2  1.0  B31f__210_1.dcm' //当前所展示的dicom文件的URL，这个是预设值
+let imageId = 'wadouri:http://175.178.186.100:31355/L506_/L506_003_input.dcm' //当前所展示的dicom文件的URL，这个是预设值
+let originimageId = 'wadouri:/image/L506_/L506_003_input.dcm'
+let predimageId = 'wadouri:/image/L506_/L506_003_pred.dcm'
+let normimageId = 'wadouri:/image/L506_/L506_003_target.dcm'
 //文件信息
 const imageInfo = ref({
     windowWidth: 0,
@@ -171,7 +174,8 @@ onMounted(() => {
     //     getViewPort(eventData);//获取当前图片视口信息
     //     console.log(eventData)
     // })
-    getResult() //获取dicom文件
+    //getResult() //获取dicom文件
+    refresh()
     toolInit()
 })
 
@@ -190,14 +194,23 @@ function getResult() {
 //刷新cornerston组件
 function refresh() {
     //加载dcm图片
-    imageId = normalIds.value[imageIndex.value]
-    const a = cornerstone.loadAndCacheImage(imageId).then(function (image0: any) {
+    //imageId = normalIds.value[imageIndex.value]
+    const a = cornerstone.loadAndCacheImage(originimageId).then(function (image0: any) {
         image = image0
+
         cornerstone.displayImage(originElement, image)
+    })
+    const b = cornerstone.loadAndCacheImage(predimageId).then(function (image0: any) {
+        image = image0
+
         cornerstone.displayImage(processElement, image)
+    })
+    const c = cornerstone.loadAndCacheImage(normimageId).then(function (image0: any) {
+        image = image0
+
         cornerstone.displayImage(normalElement, image)
     })
-    Promise.all([a]).then(() => {
+    Promise.all([a, b, c]).then(() => {
         Toolsynchronizatier(0), Toolsynchronizatier(1)
     })
 }
